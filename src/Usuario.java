@@ -1,5 +1,7 @@
 import java.util.LinkedList;
 
+import javax.swing.JOptionPane;
+
 public abstract class Usuario {
 	private String nombre;
 	private String dni;
@@ -50,16 +52,17 @@ public abstract class Usuario {
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", dni=" + dni + ", contrasenia=" + contrasenia + "]";
 	}
-	public static void Login(String nombre,String contrasenia) {
+	public static boolean Login(String nombre,String contrasenia) {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getNombre().equals(nombre) && usuario.getContrasenia().equals(contrasenia)) {
-				//clientes.contains(usuario);
-				//o puede ser admin
+				JOptionPane.showMessageDialog(null, "Ingresando...");
+				return true;
 			} 
 		}
+		JOptionPane.showMessageDialog(null, "Usuario no registrado, pidale a un admin que lo registre");
+		return false;
 	}
 	public void Menu() {
-		
+			
 	}
-
 }

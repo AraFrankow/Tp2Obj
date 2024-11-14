@@ -18,22 +18,22 @@ public class Admin extends Usuario{
 	
 	public void agregar_usuario() {
 		String nombre = JOptionPane.showInputDialog("Ingrese el nombre del usuario");
-		if (ValidarString(nombre)==false) {
+		if (ValidarNombre(nombre)==false) {
 			do {
-				nombre = JOptionPane.showInputDialog("Ingrese el nombre del libro otra vez");
-			} while (ValidarString(nombre)==false);
+				nombre = JOptionPane.showInputDialog("Ingrese el nombre del usuario otra vez");
+			} while (ValidarNombre(nombre)==false);
 		}
 		String dni = JOptionPane.showInputDialog("Ingrese el dni del usuario");
-		if (ValidarString(dni)==false) {
+		if (ValidarDni(dni)==false) {
 			do {
 				dni = JOptionPane.showInputDialog("Ingrese el dni del usuario otra vez");
-			} while (ValidarString(dni)==false);
+			} while (ValidarDni(dni)==false);
 		}
-		String contrasenia = JOptionPane.showInputDialog("Ingrese la contrasenia del usuario");
-		if (ValidarString(contrasenia)==false) {
+		String contrasenia = JOptionPane.showInputDialog("Ingrese la contraseña del usuario");
+		if (ValidarContrasenia(contrasenia)==false) {
 			do {
-				contrasenia = JOptionPane.showInputDialog("Ingrese la contrasenia del usuario otra vez");
-			} while (ValidarString(contrasenia)==false);
+				contrasenia = JOptionPane.showInputDialog("Ingrese la contraseña del usuario otra vez");
+			} while (ValidarContrasenia(contrasenia)==false);
 		}
 		String[] tipo = { "Normal", "Ejecutivo", "Premium"};
 		String eleccionTipo = (String)JOptionPane.showInputDialog(null, "Que quiere hacer?", null, 0, null, tipo, tipo[0]);
@@ -64,12 +64,12 @@ public class Admin extends Usuario{
 		do {
 			eleccion = (String)JOptionPane.showInputDialog(null, "Que quiere hacer?", null, 0, null, OpcionesAdmin.values(), OpcionesAdmin.values()[0]);
 			switch (eleccion) {
-			case "Transferir":
-				
+			case "AgregarCliente":
+				this.agregar_usuario();
 				break;
 
-			case "Borrar usuario":
-				eliminar_usuario();
+			case "BorrarCliente":
+				this.eliminar_usuario();
 				break;
 				
 			case "Salir":
@@ -83,23 +83,73 @@ public class Admin extends Usuario{
 		return "Admin [NroAdmin=" + NroAdmin + "]";
 	}
 	
-	public static boolean ValidarString(String escrito) {
+	public static boolean ValidarNombre(String nombre) {
 		boolean numero = false;
-		if (escrito.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Está vacio el campo");
+		if (nombre.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Está vacio el nombre");
 			return false;
 		} else {
-			for (int i = 0; i < escrito.length(); i++) {
-				if (Character.isDigit(escrito.charAt(i))) {
+			for (int i = 0; i < nombre.length(); i++) {
+				if (Character.isDigit(nombre.charAt(i))) {
 					numero=true;
 				}
 			}
 			if (numero==true) {
-				JOptionPane.showMessageDialog(null, "No puede tener numeros en este campo");
+				JOptionPane.showMessageDialog(null, "No puede tener numeros el nombre");
 				return false;
 			} else {
 				return true;
 			}
 		}
+	}
+	
+	public static boolean ValidarContrasenia(String contra) {
+		boolean mayus = false;
+		boolean minus = false;
+		boolean num = false;
+		
+		if (contra.length()>=6) {
+			for (int i = 0; i < contra.length(); i++) {
+				if (Character.isUpperCase(contra.charAt(i))) {
+					mayus=true;
+				}
+				if (Character.isLowerCase(contra.charAt(i))) {
+					minus=true;
+				}
+				if (Character.isDigit(contra.charAt(i))) {
+					num=true;
+				}
+			}
+		} else {
+			JOptionPane.showMessageDialog(null, "La contraseña debe tener minimo 6 caracteres");
+			return false;
+		}
+		if (mayus && minus && num) {
+			JOptionPane.showMessageDialog(null, "Es correcta");
+			return true;
+		} else {
+			JOptionPane.showMessageDialog(null, "No cumple con lo pedido");
+			return false;
+		}
+	}
+	
+	public static boolean ValidarDni(String dni) {
+		boolean letra = false;
+		if (dni.length()<7 || dni.length()>8) {
+			return false;
+		} else {
+			for (int i = 0; i < dni.length(); i++) {
+				if (Character.isLetter(dni.charAt(i))) {
+					letra=true;
+				}
+			}
+			if (letra==true) {
+				JOptionPane.showMessageDialog(null, "No puede tener letras el DNI");
+				return false;
+			} else {
+				return true;
+			}
+		}	
+		
 	}
 }
