@@ -1,4 +1,4 @@
 
 public enum OpcionesCliente {
-	Transferir, Depositar, Retirar
+	Transferir, Depositar, Retirar, Salir
 }

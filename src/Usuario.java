@@ -3,15 +3,15 @@ import java.util.LinkedList;
 public abstract class Usuario {
 	private String nombre;
 	private String dni;
-	private String contrasena;
+	private String contrasenia;
 	private static LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
 	private static LinkedList<Cliente> clientes = new LinkedList<Cliente>();
 
-	public Usuario(String nombre, String dni, String contrasena) {
+	public Usuario(String nombre, String dni, String contrasenia) {
 		super();
 		this.nombre = nombre;
 		this.dni = dni;
-		this.contrasena = contrasena;
+		this.contrasenia = contrasenia;
 	}
 
 	public String getNombre() {
@@ -30,12 +30,12 @@ public abstract class Usuario {
 		this.dni = dni;
 	}
 
-	public String getContrasena() {
-		return contrasena;
+	public String getContrasenia() {
+		return contrasenia;
 	}
 
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
 	}
 
 	public static LinkedList<Usuario> getUsuarios() {
@@ -48,11 +48,11 @@ public abstract class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [nombre=" + nombre + ", dni=" + dni + ", contrasena=" + contrasena + "]";
+		return "Usuario [nombre=" + nombre + ", dni=" + dni + ", contrasenia=" + contrasenia + "]";
 	}
-	public static void Login(String nombre,String contrasena) {
+	public static void Login(String nombre,String contrasenia) {
 		for (Usuario usuario : usuarios) {
-			if (usuario.getNombre().equals(nombre) && usuario.getContrasena().equals(contrasena)) {
+			if (usuario.getNombre().equals(nombre) && usuario.getContrasenia().equals(contrasenia)) {
 				//clientes.contains(usuario);
 				//o puede ser admin
 			} 

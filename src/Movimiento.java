@@ -5,11 +5,13 @@ public class Movimiento {
 	private LocalDateTime fechaHora;
 	private Cliente cliente;
 	private String detalle;
-	public Movimiento(LocalDateTime fechaHora, Cliente cliente, String detalle) {
+	private int movimiento;
+	public Movimiento(LocalDateTime fechaHora, Cliente cliente, String detalle, int movimiento) {
 		super();
 		this.fechaHora = fechaHora;
 		this.cliente = cliente;
 		this.detalle = detalle;
+		this.movimiento = movimiento;
 	}
 	public LocalDateTime getFechaHora() {
 		return fechaHora;
@@ -29,10 +31,19 @@ public class Movimiento {
 	public void setDetalle(String detalle) {
 		this.detalle = detalle;
 	}
+	
+	public int getMovimiento() {
+		return movimiento;
+	}
+	public void setMovimiento(int movimiento) {
+		this.movimiento = movimiento;
+	}
 	@Override
 	public String toString() {
-		return "Movimiento [fechaHora=" + fechaHora + ", cliente=" + cliente + ", detalle=" + detalle + "]";
+		return "Movimiento [fechaHora=" + fechaHora + ", cliente=" + cliente + ", detalle=" + detalle + ", movimiento="
+				+ movimiento + "]";
 	}
+	
 	
 	
 	
