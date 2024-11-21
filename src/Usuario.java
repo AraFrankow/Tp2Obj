@@ -59,7 +59,6 @@ public abstract class Usuario {
 				return true;
 			} 
 		}
-		JOptionPane.showMessageDialog(null, "Usuario no registrado, pidale a un admin que lo registre");
 		return false;
 	}
 	public void Menu() {

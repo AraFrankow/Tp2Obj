@@ -1,4 +1,5 @@
-
 public enum OpcionesAdmin {
-	AgregarCliente, BorrarCliente, Salir
+	AgregarCliente, BorrarCliente, Salir;
 }
+
+

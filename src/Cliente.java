@@ -44,27 +44,29 @@
 			//		"Bienvenido", tipo, 0, 0, null, 
 			//		OpcionesCliente.values(), OpcionesCliente.values());
 			
-			String eleccion;
+			//String eleccion;
+			int opcion;
 			do {
-				eleccion = (String)JOptionPane.showInputDialog(null, "Que quiere hacer?", null, 0, null, OpcionesCliente.values(), OpcionesCliente.values()[0]);
-				switch (eleccion) {
-				case "Transferir":
+				//eleccion = (String)JOptionPane.showInputDialog(null, "Que quiere hacer?", null, 0, null, OpcionesCliente.values(), OpcionesCliente.values()[0]);
+				opcion = JOptionPane.showOptionDialog(null,  "Bienvenido", tipo, 0, 0, null, OpcionesCliente.values(), OpcionesCliente.values());
+				switch (opcion) {
+				case 0:
 					Transferir(null, 0);
 					break;
 
-				case "Depositar":
+				case 1:
 					Depositar(0);
 					break;
 					
-				case "Retirar":
+				case 2:
 					Retirar(0);
 					break;
 					
-				case "Salir":
+				case 3:
 					JOptionPane.showMessageDialog(null, "Saliendo...");
 					break;
 				}
-			} while (!eleccion.equals("Salir"));
+			} while (opcion!=3);
 		}
 		
 		
