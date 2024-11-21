@@ -37,7 +37,7 @@ public class Admin extends Usuario{
 		}
 		String[] tipo = { "Normal", "Ejecutivo", "Premium"};
 		String eleccionTipo = (String)JOptionPane.showInputDialog(null, "Que tipo de cliente quiere ser?", null, 0, null, tipo, tipo[0]);
-		Cliente nuevo = new Cliente(nombre, dni, contrasenia, eleccionTipo, null);
+		Cliente nuevo = new Cliente(nombre, dni, contrasenia, eleccionTipo, null, 0.0);
 		for (Usuario item : Usuario.getUsuarios()) {
 			if (item.getDni().equals(nuevo.getDni())) {
 				JOptionPane.showMessageDialog(null, "Este usuario ya se registró antes");

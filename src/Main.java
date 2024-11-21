@@ -5,7 +5,7 @@ public class Main {
 	public static void main(String[] args) {
 		Admin yo = new Admin("Ara", "11111121", "OlaAdmin1", 1);
 		Usuario.getUsuarios().add(yo);
-		Cliente otro = new Cliente(null, null, null, null, null);
+		Cliente otro = new Cliente(null, null, null, null, null, 0.0);
 		String nombre, contra, eleccion;
 		String[] opc = { "Loguearse", "Salir"};
 		
