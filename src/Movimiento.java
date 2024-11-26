@@ -3,15 +3,15 @@ import java.time.LocalDateTime;
 public class Movimiento {
 
 	private LocalDateTime fechaHora;
-	private Cliente cliente;
+	private Usuario usuario;
 	private String detalle;
-	private int movimiento;
-	public Movimiento(LocalDateTime fechaHora, Cliente cliente, String detalle, int movimiento) {
+	private Double movimiento;
+	public Movimiento(LocalDateTime fechaHora, Usuario usuario, String detalle, Double transferir) {
 		super();
 		this.fechaHora = fechaHora;
-		this.cliente = cliente;
+		this.usuario = usuario;
 		this.detalle = detalle;
-		this.movimiento = movimiento;
+		this.movimiento = transferir;
 	}
 	public LocalDateTime getFechaHora() {
 		return fechaHora;
@@ -19,11 +19,12 @@ public class Movimiento {
 	public void setFechaHora(LocalDateTime fechaHora) {
 		this.fechaHora = fechaHora;
 	}
-	public Cliente getCliente() {
-		return cliente;
+	
+	public Usuario getUsuario() {
+		return usuario;
 	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	public String getDetalle() {
 		return detalle;
@@ -32,15 +33,15 @@ public class Movimiento {
 		this.detalle = detalle;
 	}
 	
-	public int getMovimiento() {
+	public Double getMovimiento() {
 		return movimiento;
 	}
-	public void setMovimiento(int movimiento) {
+	public void setMovimiento(Double movimiento) {
 		this.movimiento = movimiento;
 	}
 	@Override
 	public String toString() {
-		return "Movimiento [fechaHora=" + fechaHora + ", cliente=" + cliente + ", detalle=" + detalle + ", movimiento="
+		return "Movimiento [fechaHora=" + fechaHora + ", usuario=" + usuario + ", detalle=" + detalle + ", movimiento="
 				+ movimiento + "]";
 	}
 	

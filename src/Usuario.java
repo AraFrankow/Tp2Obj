@@ -6,7 +6,7 @@ public abstract class Usuario {
 	private String nombre;
 	private String dni;
 	private String contrasenia;
-	private static LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
+	protected static LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
 	private static LinkedList<Cliente> clientes = new LinkedList<Cliente>();
 
 	public Usuario(String nombre, String dni, String contrasenia) {
