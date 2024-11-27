@@ -17,6 +17,8 @@ public class Admin extends Usuario{
 	}
 	
 	public static void AgregarCliente() {
+		
+		
 		String nombre = JOptionPane.showInputDialog("Ingrese el nombre del usuario");
 		if (ValidarNombre(nombre)==false) {
 			do {
@@ -37,7 +39,30 @@ public class Admin extends Usuario{
 		}
 		String[] tipo = { "Normal", "Ejecutivo", "Premium"};
 		String eleccionTipo = (String)JOptionPane.showInputDialog(null, "Que tipo de cliente quiere ser?", null, 0, null, tipo, tipo[0]);
-		Cliente nuevo = new Cliente(nombre, dni, contrasenia, eleccionTipo, null, 0.0);
+        
+		
+		
+		StringBuilder nroCuenta = new StringBuilder(); //Para concatenar los numero que le doy con el int de abajo
+        for (int i = 0; i < 22; i++) {
+            int digito = (int) (Math.random() * 10);
+            nroCuenta.append(digito); // Lo añade al final del int
+        }
+        
+        StringBuilder nroTarjeta = new StringBuilder(); //Para concatenar los numero que le doy con el int de abajo
+        for (int i = 0; i < 16; i++) {
+            int digitoTar = (int) (Math.random() * 10);
+            nroTarjeta.append(digitoTar); // Lo añade al final del int
+        }
+                
+		//String tarjeta = JOptionPane.showInputDialog("Ingrese el numero de su tarjeta");
+		//if (ValidarTarjeta(tarjeta)==false) {
+		//	do {
+		//		tarjeta = JOptionPane.showInputDialog("Ingrese el numero de su tarjeta otra vez");
+		//	} while (ValidarTarjeta(tarjeta)==false);
+		//}
+        
+		Cuenta unica = new Cuenta(nroCuenta.toString(), 0, nroTarjeta.toString());
+		Cliente nuevo = new Cliente(nombre, dni, contrasenia, eleccionTipo, unica, 0.0);
 		for (Usuario item : Usuario.getUsuarios()) {
 			if (item.getDni().equals(nuevo.getDni())) {
 				JOptionPane.showMessageDialog(null, "Este usuario ya se registró antes");
@@ -60,10 +85,8 @@ public class Admin extends Usuario{
 
 	@Override
 	public void Menu() {
-		//String eleccion;
 		int opcion;
 		do {
-			//eleccion = (String)JOptionPane.showInputDialog(null, "Que quiere hacer?", null, 0, null, OpcionesAdmin.values(), OpcionesAdmin.values()[0]);
 			opcion = JOptionPane.showOptionDialog(null, "Bienvenido", null, 0, 0, null, OpcionesAdmin.values(), OpcionesAdmin.values());
 			switch (opcion) {
 			case 0:
@@ -155,4 +178,24 @@ public class Admin extends Usuario{
 			}	
 			
 		}
+		public static boolean ValidarTarjeta(String tarjeta) {
+			boolean letra = false;
+			if (tarjeta.length()==16) {
+				for (int i = 0; i < tarjeta.length(); i++) {
+					if (Character.isLetter(tarjeta.charAt(i))) {
+						letra=true;
+					}
+				}
+				if (letra==true) {
+					JOptionPane.showMessageDialog(null, "No puede tener letras la tarjeta");
+					return false;
+				} else {
+					return true;
+				}
+			} else {
+				return false;
+			}	
+			
+		}
+		
 }

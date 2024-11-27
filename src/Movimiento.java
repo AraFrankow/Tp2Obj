@@ -42,7 +42,7 @@ public class Movimiento {
 	@Override
 	public String toString() {
 		return "Movimiento [fechaHora=" + fechaHora + ", usuario=" + usuario + ", detalle=" + detalle + ", movimiento="
-				+ movimiento + "]";
+				+ movimiento + "] \n";
 	}
 	
 	

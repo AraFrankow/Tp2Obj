@@ -1,4 +1,4 @@
 
 public enum OpcionesCliente {
-	Transferir, Depositar, Retirar, DineroActual, Movimientos,Salir
+	Transferir, Depositar, Retirar, Ver,Salir
 }

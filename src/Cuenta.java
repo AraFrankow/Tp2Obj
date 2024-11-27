@@ -2,25 +2,25 @@ import java.util.LinkedList;
 
 public class Cuenta {
 
-	private int nroCuenta;
+	private static  String nroCuenta;
 	private double saldo;
-	private String tarjeta;
-	private LinkedList<Movimiento> movimientos = new LinkedList<Movimiento>();
+	private static String tarjeta;
+	private static LinkedList<Movimiento> movimientos = new LinkedList<Movimiento>();
 
-	public Cuenta(int nroCuenta, double saldo, String tarjeta) {
+	public Cuenta(String string, double saldo, String tarjeta) {
 		super();
-		this.nroCuenta = nroCuenta;
+		Cuenta.nroCuenta = string;
 		this.saldo = saldo;
-		this.tarjeta = tarjeta;
+		Cuenta.tarjeta = tarjeta;
 		this.movimientos = movimientos;
 	}
 
-	public int getNroCuenta() {
+	public static String getNroCuenta() {
 		return nroCuenta;
 	}
 
-	public void setNroCuenta(int nroCuenta) {
-		this.nroCuenta = nroCuenta;
+	public void setNroCuenta(String nroCuenta) {
+		Cuenta.nroCuenta = nroCuenta;
 	}
 
 	public double getSaldo() {
@@ -31,26 +31,26 @@ public class Cuenta {
 		this.saldo = saldo;
 	}
 
-	public String getTarjeta() {
+	public static String getTarjeta() {
 		return tarjeta;
 	}
 
 	public void setTarjeta(String tarjeta) {
-		this.tarjeta = tarjeta;
+		Cuenta.tarjeta = tarjeta;
 	}
 
-	public LinkedList<Movimiento> getMovimientos() {
+	public static LinkedList<Movimiento> getMovimientos() {
 		return movimientos;
 	}
 
-	public void setMovimientos(LinkedList<Movimiento> movimientos) {
-		this.movimientos = movimientos;
+
+	public static void setMovimientos(LinkedList<Movimiento> movimientos) {
+		Cuenta.movimientos = movimientos;
 	}
 
 	@Override
 	public String toString() {
-		return "Cuenta [nroCuenta=" + nroCuenta + ", saldo=" + saldo + ", tarjeta=" + tarjeta + ", movimientos="
-				+ movimientos + "]";
+		return nroCuenta ;
 	}
 
 }
