@@ -2,25 +2,25 @@ import java.util.LinkedList;
 
 public class Cuenta {
 
-	private String nroCuenta;
+	private static String nroCuenta;
 	private double saldo;
-	private String tarjeta;
-	private LinkedList<Movimiento> movimientos = new LinkedList<Movimiento>();
+	private static String tarjeta;
+	private static LinkedList<Movimiento> movimientos = new LinkedList<Movimiento>();
 
 	public Cuenta(String string, double saldo, String tarjeta) {
 		super();
-		this.nroCuenta = string;
+		Cuenta.nroCuenta = string;
 		this.saldo = saldo;
-		this.tarjeta = tarjeta;
-		this.movimientos = movimientos;
+		Cuenta.tarjeta = tarjeta;
+		Cuenta.movimientos = movimientos;
 	}
 
-	public String getNroCuenta() {
+	public static String getNroCuenta() {
 		return nroCuenta;
 	}
 
 	public void setNroCuenta(String nroCuenta) {
-		this.nroCuenta = nroCuenta;
+		Cuenta.nroCuenta = nroCuenta;
 	}
 
 	public double getSaldo() {
@@ -31,21 +31,21 @@ public class Cuenta {
 		this.saldo = saldo;
 	}
 
-	public String getTarjeta() {
+	public static String getTarjeta() {
 		return tarjeta;
 	}
 
 	public void setTarjeta(String tarjeta) {
-		this.tarjeta = tarjeta;
+		Cuenta.tarjeta = tarjeta;
 	}
 
-	public LinkedList<Movimiento> getMovimientos() {
+	public static LinkedList<Movimiento> getMovimientos() {
 		return movimientos;
 	}
 
 
 	public void setMovimientos(LinkedList<Movimiento> movimientos) {
-		this.movimientos = movimientos;
+		Cuenta.movimientos = movimientos;
 	}
 
 	@Override

@@ -7,7 +7,10 @@ public abstract class Usuario {
 	private String dni;
 	private String contrasenia;
 	protected static LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
-
+	private static LinkedList<Cliente> clientes = new LinkedList<Cliente>();
+	
+	public static Usuario usuarioLogueado = null;
+	
 	public Usuario(String nombre, String dni, String contrasenia) {
 		super();
 		this.nombre = nombre;
@@ -46,6 +49,14 @@ public abstract class Usuario {
 	public static void setUsuarios(LinkedList<Usuario> usuarios) {
 		Usuario.usuarios = usuarios;
 	}
+	
+	public static LinkedList<Cliente> getClientes() {
+		return clientes;
+	}
+
+	public static void setClientes(LinkedList<Cliente> clientes) {
+		Usuario.clientes = clientes;
+	}
 
 	@Override
 	public String toString() {
@@ -60,6 +71,7 @@ public abstract class Usuario {
 		}
 		return false;
 	}
+	
 	public void Menu() {
 			
 	}
