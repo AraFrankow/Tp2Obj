@@ -31,16 +31,21 @@ import javax.swing.JOptionPane;
 		public void setDineroActual(Double dineroActual) {
 			DineroActual = dineroActual;
 		}
-		public boolean Transferir(Usuario usuario, Double transferir) {
-			if (transferir>0 && transferir <= DineroActual ) {
-				DineroActual -= transferir;
+		public boolean Transferir(Cliente destino, Double transferir) {
+			if (transferir>0 && transferir <= cuenta.getSaldo() ) {
+				cuenta.setSaldo(cuenta.getSaldo() - transferir);
+				destino.getCuenta().setSaldo(destino.getCuenta().getSaldo()+transferir);
+				String detalle = JOptionPane.showInputDialog("Ingrese el motivo de la transferencia");
+				cuenta.getMovimientos().add(new Movimiento(LocalDateTime.now(), destino, detalle, transferir));
+				return true;
 			}
 			return false;
 			
 		}
 		public void Depositar(double depositar) {
 			if (depositar>0) {
-				DineroActual += depositar;
+				cuenta.setSaldo(cuenta.getSaldo() + depositar);
+				cuenta.getMovimientos().add(new Movimiento(LocalDateTime.now(), null, "Deposito", depositar));
 				return;
 			}else {
 				return;
@@ -80,11 +85,11 @@ import javax.swing.JOptionPane;
 						break;
 					}	
 					int opcionDos = JOptionPane.showOptionDialog(null, "Usuarios", null, 0, 0, null, getUsuarios().toArray(), getUsuarios().toArray()[0]);
-					Transferir(getUsuarios().get(opcionDos), transferir);
+					Transferir(Cliente.getUsuarios().get(opcionDos), transferir);
 					JOptionPane.showMessageDialog(null, "Transfiriendo a "+getUsuarios().get(opcionDos)+ " $"+ transferir);
 					String detalle = JOptionPane.showInputDialog("Ingrese el motivo de la transferencia");
 					Movimiento nuevaTransferencia = new Movimiento(LocalDateTime.now(), getUsuarios().get(opcionDos), detalle, transferir);
-					Cuenta.getMovimientos().add(nuevaTransferencia);
+					cuenta.getMovimientos().add(nuevaTransferencia);
 
 					break;
 
@@ -98,7 +103,7 @@ import javax.swing.JOptionPane;
 					Depositar(depositar);
 					JOptionPane.showMessageDialog(null, "Depositando $"+depositar+"...");
 					Movimiento nuevoDeposito = new Movimiento(LocalDateTime.now(), null, "Deposito", depositar);
-					Cuenta.getMovimientos().add(nuevoDeposito);
+					cuenta.getMovimientos().add(nuevoDeposito);
 					break;
 					
 				case 2:
@@ -111,7 +116,7 @@ import javax.swing.JOptionPane;
 					Retirar(retirar);
 					JOptionPane.showMessageDialog(null, "Retirando...");
 					Movimiento nuevoRetiro = new Movimiento(LocalDateTime.now(), null, "Retiro", retirar);
-					Cuenta.getMovimientos().add(nuevoRetiro);
+					cuenta.getMovimientos().add(nuevoRetiro);
 					break;
 				case 3:
 					opcion2 = JOptionPane.showOptionDialog(null,  "Que queres ver?", tipo, 0, 0, null, OpcionesVer.values(), OpcionesVer.values());
@@ -121,15 +126,15 @@ import javax.swing.JOptionPane;
 							break;
 							
 						case 1:
-							JOptionPane.showMessageDialog(null, Cuenta.getMovimientos());
+							JOptionPane.showMessageDialog(null, cuenta.getMovimientos());
 							break;
 							
 						case 2:
-							JOptionPane.showMessageDialog(null, Cuenta.getNroCuenta());
+							JOptionPane.showMessageDialog(null, cuenta.getNroCuenta());
 							break;
 							
 						case 3:
-							JOptionPane.showMessageDialog(null, Cuenta.getTarjeta());
+							JOptionPane.showMessageDialog(null, cuenta.getTarjeta());
 							break;
 							
 						case 4:
